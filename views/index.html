@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <% include ./partials/header.html %>
+    
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Venta</th>
+          <th>Precio</th>
+          <th>Tag</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+
+      <% articles.forEach(article => { %>
+        <tr>
+          <td><%= article.nombre %></td>
+          <td><%= article.venta %> </td>
+          <td><%= article.precio %><span>€</span></td>
+          <td><%= article.tags %> </td>
+          <td><img src="<%= article.foto %>" alt=""></td>
+          
+        </tr>
+      <% }) %>
+    </table>
+
+    <% include ./partials/footer.html %>
+      
+  </body>
+</html>

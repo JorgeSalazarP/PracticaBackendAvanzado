@@ -1,0 +1,94 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+table{
+
+  margin: 0px auto;
+
+  width: 80%;
+  height: auto;
+  border-collapse: collapse;
+  
+}
+
+th,td{
+
+  padding: 50px;
+
+}
+
+thead{
+
+  background-color: #36af95;
+  border-bottom: solid 5px;
+  color: white;
+
+}
+
+th{
+    font-size: 1.4rem;
+}
+
+tr{
+  text-align: center;
+  font-weight: bold;
+}
+tr:nth-child(even){
+
+  background-color: #ddd;
+  
+}
+
+td{
+
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+
+}
+
+img{
+  
+  width: 35%;
+  height: auto;
+
+}
+
+h1{
+
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 3.5rem;
+  letter-spacing: 1px;
+  
+}
+
+
+
+    
+footer{
+  
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: black;
+  width: 80%;
+  height: 5rem;
+  margin-top: 5rem;
+  
+  
+}
+
+footer h4{
+
+  font-size: 18px;
+
+}
