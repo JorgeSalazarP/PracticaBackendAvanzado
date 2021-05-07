@@ -8,9 +8,6 @@ var app = express();
 
 require('./lib/connectMongoose'); // Necesito llamarlo para cargar en npm run start y cargar la API
 
-const i18n = require('./lib/i18nConfigure');
-app.use(i18n.init);
-
 
 
 // view engine setup
@@ -30,10 +27,19 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 app.use('/apiv1/anuncios',require('./routes/apiv1/anuncios'));
 
+
+/**
+ * Internacionalización i18n
+ */
+const i18n = require('./lib/i18nConfigure');
+app.use(i18n.init);
+
+
 /**
  * Ruta de la Website
  */
-app.use('/', require('./routes/index'));
+app.use('/',              require('./routes/index'));
+app.use('/change-locale', require('./routes/change-locale'));
 
 
 // catch 404 and forward to error handler
