@@ -7,6 +7,12 @@ var logger = require('morgan');
 var app = express();
 
 require('./lib/connectMongoose'); // Necesito llamarlo para cargar en npm run start y cargar la API
+
+const i18n = require('./lib/i18nConfigure');
+app.use(i18n.init);
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');

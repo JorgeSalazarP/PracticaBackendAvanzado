@@ -71,7 +71,7 @@ async function filters(req, res, next) {
 
         res.locals.articles = result;
         res.render('index',{
-            title: 'Nodepop',
+            title: 'NodePop',
             age:new Date().getFullYear()
            }
         );
