@@ -70,11 +70,7 @@ async function filters(req, res, next) {
       if (req.originalUrl.indexOf('api') !== 1){ // Si la llamada la hace index.js
 
         res.locals.articles = result;
-        res.render('index',{
-            title: 'NodePop',
-            age:new Date().getFullYear()
-           }
-        );
+        res.render('index');
 
       }else{
 

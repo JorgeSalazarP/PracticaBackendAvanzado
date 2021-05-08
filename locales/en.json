@@ -5,5 +5,12 @@
 	"Price": "Price",
 	"Tags": "Tags",
 	"Image": "Image",
-	"Jorge Salazar Web - All rights reserved": "Jorge Salazar Web - All rights reserved"
+	"Jorge Salazar Web - All rights reserved": "Jorge Salazar Web - All rights reserved",
+	"Email address": "Email address",
+	"Password": "Password",
+	"Submit": "Submit",
+	"Invalid credentials": "Invalid credentials",
+	"Login": "Login",
+	"Private": "Private",
+	"Logout": "Logout"
 }

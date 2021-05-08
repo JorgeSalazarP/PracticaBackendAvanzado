@@ -36,7 +36,7 @@ npm i cross-env
 ## Inicializar la BBDD con MongoDB
 
 ```
-npm run installDB
+npm run init-db
 ```
 ## La BBDD carga el archivo /data/anuncios.json
 

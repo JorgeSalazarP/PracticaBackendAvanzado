@@ -3,13 +3,11 @@
 var express = require('express');
 var router = express.Router();
 
+/* GET private page. */
 
-
-/* GET home page. */
 router.get('/',require('../models/filters'));
 
 
+
+
 module.exports = router;
-
-
-

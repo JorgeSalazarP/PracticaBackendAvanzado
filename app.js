@@ -3,10 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+const sessionAuth= require('./lib/sessionAuthMiddleware');
 
 var app = express();
 
-require('./lib/connectMongoose'); // Necesito llamarlo para cargar en npm run start y cargar la API
+require('./models/connectMongoose');
 
 
 
@@ -14,6 +16,11 @@ require('./lib/connectMongoose'); // Necesito llamarlo para cargar en npm run st
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').__express);
+
+
+app.locals.title = 'NodePop';
+app.locals.age = new Date().getFullYear(),
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,12 +41,29 @@ app.use('/apiv1/anuncios',require('./routes/apiv1/anuncios'));
 const i18n = require('./lib/i18nConfigure');
 app.use(i18n.init);
 
+app.use(session({
+
+  name:'nodepop-session',
+  secret: 'dsa987dad9/)j(/f()/9fgsfgsda7d98',
+  saveUninitialized: true,
+  resave: false,
+  cookie: {
+    secure: process.env.NODE_ENV !== 'development', // solo se envian al servidor cuando la petición es HTTPS
+    maxAge: 1000 * 60 * 60 * 24 * 2 // 2 días de inactividad
+  },
+
+}));
 
 /**
  * Ruta de la Website
  */
+
 app.use('/',              require('./routes/index'));
+app.get('/login',         require('./controllers/loginController').index);
+app.post('/login',        require('./controllers/loginController').post);
 app.use('/change-locale', require('./routes/change-locale'));
+
+
 
 
 // catch 404 and forward to error handler
