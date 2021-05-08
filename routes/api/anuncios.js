@@ -2,11 +2,13 @@
 var express = require('express');
 var router = express.Router();
 const Anuncio = require('../../models/Anuncio');
+const jwtAuth = require('../../lib/jwtAuth');
 
-/* GET /apiv1/anuncios*/
-router.get('/',require('../../models/filters'));
 
-/* GET /apiv1/anuncios/tags*/ 
+/* GET /api/anuncios*/
+router.get('/',jwtAuth,require('../../models/filters'));
+
+/* GET /api/anuncios/tags*/ 
 //Listamos los tags existentes
 router.get('/tags', async (req, res, next) => {
 
