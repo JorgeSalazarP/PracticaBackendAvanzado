@@ -4,7 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const loginController = require('./controllers/loginController');
 const sessionAuth= require('./lib/sessionAuthMiddleware');
+const MongoStore = require('connect-mongo');
 
 var app = express();
 
@@ -32,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  * Ruta de la API
  */
-app.use('/apiv1/anuncios',require('./routes/apiv1/anuncios'));
+app.post('/api/authenticate',   loginController.postJWT);
+app.use('/api/anuncios',  require('./routes/api/anuncios'));
 
 
 /**
@@ -51,16 +54,23 @@ app.use(session({
     secure: process.env.NODE_ENV !== 'development', // solo se envian al servidor cuando la petición es HTTPS
     maxAge: 1000 * 60 * 60 * 24 * 2 // 2 días de inactividad
   },
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_CONNECTION_STR})
 
 }));
+
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+})
 
 /**
  * Ruta de la Website
  */
 
 app.use('/',              require('./routes/index'));
-app.get('/login',         require('./controllers/loginController').index);
-app.post('/login',        require('./controllers/loginController').post);
+app.get('/login',         loginController.index);
+app.post('/login',        loginController.post);
+app.get('/logout',        loginController.logout);
 app.use('/change-locale', require('./routes/change-locale'));
 
 
