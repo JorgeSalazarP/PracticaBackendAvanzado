@@ -1,6 +1,6 @@
 'user strict';
 
-const Anuncio = require('./Anuncio');
+const Anuncio = require('../../models/Anuncio');
 
 
 async function filters(req, res, next) {

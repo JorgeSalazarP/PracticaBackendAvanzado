@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 
 
 /* GET /api/anuncios*/
-router.get('/',jwtAuth,require('../../models/filters'));
+router.get('/',jwtAuth,require('../../routes/api/filters'));
 
 /* GET /api/anuncios/tags*/ 
 //Listamos los tags existentes

@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET private page. */
 
-router.get('/',require('../models/filters'));
+router.get('/',require('../routes/api/filters'));
 
 
 
