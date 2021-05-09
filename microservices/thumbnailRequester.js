@@ -7,11 +7,11 @@ const requester = new cote.Requester({
 })
 
 
-const requesterThumbnail = function(patch_image) {
+const requesterThumbnail = function(patchImage) {
     console.log('requester thumbnail');
     const request = {
         type: 'process thumbnail',
-        patch_image: patch_image
+        patchImage: patchImage
     }
 
     console.log('configuration Request', request);
